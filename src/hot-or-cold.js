@@ -5,13 +5,13 @@ import React from 'react';
 
 export default function HotorCold(props){
     let text;
-    if(props.temp == 'cold'){
+    if(props.temp === 'cold'){
         text='Cold';
-    }else if(props.temp == 'init'){
+    }else if(props.temp === 'init'){
         text='Make your Guess'
-    }else if(props.temp == 'hot'){
+    }else if(props.temp === 'hot'){
         text='Hot';
-    }else if(props.temp == 'kinda'){
+    }else if(props.temp === 'kinda'){
         text='Kinda Hot';
     }else{//win case
         text='You Won. Click new game to play again';

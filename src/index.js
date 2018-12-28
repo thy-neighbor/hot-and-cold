@@ -4,7 +4,7 @@ import './index.css';
 import GameBoard from './game-board';
 import * as serviceWorker from './serviceWorker';
 
-ReactDOM.render(<Gameboard />, document.getElementById('root'));
+ReactDOM.render(<GameBoard />, document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

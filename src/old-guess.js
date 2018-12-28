@@ -1,4 +1,6 @@
 //stateful gets array of data to be displayed
+import React from 'react';
+
 
 export default class OldGuess extends React.Component{
     constructor(props){
@@ -17,10 +19,12 @@ export default class OldGuess extends React.Component{
     }
 
     render(){
-        const lists= props.prevList.map((value,index)=>{
-            <li key={index}>
-                {value}
-            </li>
+        const lists= this.props.prevList.map((value,index)=>{
+            return(
+                <li key={index}>
+                    {value}
+                </li>
+            );
         });
 
         return(

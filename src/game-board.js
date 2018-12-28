@@ -2,9 +2,9 @@
 
 import React from 'react';
 
-import HotorCold from '/components/hot-or-cold';
-import OldGuess from '/components/old-guess';
-import EnterGuess from "/components/enter-guess.js";
+import HotorCold from './hot-or-cold';
+import OldGuess from './old-guess';
+import EnterGuess from "./enter-guess.js";
 
 
 
@@ -28,7 +28,7 @@ export default class GameBoard extends React.Component{
             <div>
                 <h1>HOT or COLD</h1>
                 <div className="container">
-                    <HotorCold></HotorCold>
+                    <HotorCold temp={this.state.temp}></HotorCold>
                     <EnterGuess></EnterGuess>
                     <OldGuess></OldGuess>
                 </div>
