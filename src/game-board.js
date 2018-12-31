@@ -14,12 +14,20 @@ export default class GameBoard extends React.Component{
 
         const winNum=Math.floor(Math.random() * 101)+1;
 
-        this.state({
+        this.state = {
             temp:'init',
             winNum,
-        });
+            currGuess:Number
+        };
     }
 
+    getGuess(currGuess){
+        console.log("OOOOP THERE IT ISSSSS",currGuess);
+        this.setState({
+            currGuess
+        });
+        //if not winning number dadaadaadd
+    }
 
 
     render(){
@@ -29,9 +37,9 @@ export default class GameBoard extends React.Component{
                 <h1>HOT or COLD</h1>
                 <div className="container">
                     <HotorCold temp={this.state.temp}></HotorCold>
-                    <EnterGuess></EnterGuess>
-                    <OldGuess></OldGuess>
-                </div>
+                    <EnterGuess onSubmit={(value) => this.getGuess(value)} value={this.state.currGuess}></EnterGuess>
+                    <OldGuess prevEntry={this.state.currGuess}></OldGuess>
+                </div> 
             </div>
         );
 

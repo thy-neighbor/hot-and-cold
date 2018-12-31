@@ -6,20 +6,22 @@ export default class OldGuess extends React.Component{
     constructor(props){
         super(props);
         this.state ={
-            prev:[]
+            prevList:[]
         }
     }
 
-    addPrev(value){
+    addPrev(prevEntry){
+        prevEntry=Number(prevEntry);
         this.setState({
-            cards:[...this.state.cards, {
-                value
-            }]
+            prevList:[...this.state.prevList, {prevEntry}]
         });
     }
 
     render(){
-        const lists= this.props.prevList.map((value,index)=>{
+
+        //this.addPrev(this.props.prevEntry);
+
+        const lists= this.state.prevList.map((value,index)=>{
             return(
                 <li key={index}>
                     {value}
@@ -35,6 +37,9 @@ export default class OldGuess extends React.Component{
             </div>
         );
     }
-
-    
+   
 }
+
+OldGuess.defaultProps = {
+    prevEntry: ''
+};
