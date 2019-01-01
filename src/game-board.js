@@ -16,19 +16,42 @@ export default class GameBoard extends React.Component{
 
         this.state = {
             temp:'init',
-            winNum,
-            currGuess:Number
+            winNum:winNum,
+            currGuess:Number,
+            prevList:[]
         };
     }
 
     getGuess(currGuess){
         console.log("OOOOP THERE IT ISSSSS",currGuess);
+
         this.setState({
-            currGuess
+            currGuess:currGuess,
+            prevList:[...this.state.prevList, {currGuess}]
         });
+        //update the array here not in oldguess module
         //if not winning number dadaadaadd
+        this.gameTemperature(currGuess);
     }
 
+    gameTemperature(currGuess){
+        const {winNum}=this.state;
+        let ans=Math.abs(winNum-currGuess);
+        let temp;
+        if(ans===0){
+            temp='win'
+        }else if(ans<=10){
+            temp='hot'
+        }else if(ans>10 && ans<=15){
+            temp='kinda'
+        }else if(ans>15){
+            temp='cold'
+        }else{
+            temp='win'
+        }
+        console.log("Current Guess",currGuess,"temp", temp, "Winning is:", winNum);
+        this.setState({temp});
+    }
 
     render(){
 
@@ -37,10 +60,10 @@ export default class GameBoard extends React.Component{
                 <h1>HOT or COLD</h1>
                 <div className="container">
                     <HotorCold temp={this.state.temp}></HotorCold>
-                    <EnterGuess onSubmit={(value) => this.getGuess(value)} value={this.state.currGuess}></EnterGuess>
-                    <OldGuess prevEntry={this.state.currGuess}></OldGuess>
+                    <EnterGuess onSubmit={(value) => this.getGuess(value)}></EnterGuess>
+                    <OldGuess prevList={this.state.prevList}></OldGuess>
                 </div> 
-            </div>
+            </div> 
         );
 
     }

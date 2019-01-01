@@ -1,45 +1,28 @@
 //stateful gets array of data to be displayed
+
+//this needs to be static
 import React from 'react';
 
 
-export default class OldGuess extends React.Component{
-    constructor(props){
-        super(props);
-        this.state ={
-            prevList:[]
-        }
-    }
-
-    addPrev(prevEntry){
-        prevEntry=Number(prevEntry);
-        this.setState({
-            prevList:[...this.state.prevList, {prevEntry}]
-        });
-    }
-
-    render(){
-
-        //this.addPrev(this.props.prevEntry);
-
-        const lists= this.state.prevList.map((value,index)=>{
-            return(
-                <li key={index}>
-                    {value}
-                </li>
-            );
-        });
-
-        return(
-            <div className="OldGuess">
-                <ul className="list">
-                    {lists}
-                </ul>
-            </div>
-        );
-    }
+export default function OldGuess(props){
    
-}
+    const {prevList} = props;
+    console.log("THIS IS VALUE --->",prevList);
+    const lists= prevList.map((value,index) =>{
+        
+        return(
+            <li key={index}>
+                {value.currGuess}
+            </li>
+        );
+    });
 
-OldGuess.defaultProps = {
-    prevEntry: ''
-};
+    return(
+        <div className="OldGuess">
+            <ul className="list">
+                {lists}
+            </ul>
+        </div>
+    );
+
+}
